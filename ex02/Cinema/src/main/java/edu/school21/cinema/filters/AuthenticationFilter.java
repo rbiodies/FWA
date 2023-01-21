@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Objects;
-import java.util.Optional;
 
 public class AuthenticationFilter implements Filter {
 
@@ -23,7 +21,7 @@ public class AuthenticationFilter implements Filter {
         User user = (User) session.getAttribute("user");
 
         if (user != null && (uri.endsWith("/signIn") || uri.endsWith("/signUp"))) {
-            res.sendRedirect("/profile");
+            res.sendRedirect("/Cinema-1.0-SNAPSHOT/profile");
         } else if (user == null && uri.endsWith("/profile")) {
             res.setStatus(HttpServletResponse.SC_FORBIDDEN);
         } else {
