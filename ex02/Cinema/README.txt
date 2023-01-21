@@ -1,4 +1,4 @@
-Instructions on how to deploy and use your application.
+# Instructions on how to deploy and use your application.
 
 You need to create a database. I used SQLite. Specify db.url=/your_path/FWA/test.db in the src/main/webapp/WEB-INF/application.properties file. Run schema.sql and data.sql.
 
