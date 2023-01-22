@@ -19,9 +19,15 @@ public class ProfileServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
-        request.setAttribute("name", user.getFirstName() + " " + user.getLastName());
-        request.setAttribute("email", user.getEmail());
+        request.setAttribute("user", user);
 
         request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession session = request.getSession();
+        session.removeAttribute("user");
+        response.sendRedirect("/Cinema-1.0-SNAPSHOT");
     }
 }

@@ -1,3 +1,5 @@
+<jsp:useBean id="user" scope="request" type="edu.school21.cinema.models.User"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%--
   Created by IntelliJ IDEA.
   User: 20228428
@@ -5,15 +7,61 @@
   Time: 00:53
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <title>Profile</title>
+    <style>
+        body {
+            margin: 0;
+            background: #F4F1F8;
+        }
+        /* внешние границы таблицы серого цвета толщиной 1px */
+        table {
+            width: 600px;
+            border: 1px solid grey;
+        }
+        /* границы ячеек первого ряда таблицы */
+        th {
+            background-color: lightgray;
+            padding: 10px;
+            border: 1px solid grey;
+        }
+        /* границы ячеек тела таблицы */
+        td {
+            text-align: center;
+            padding: 10px 10px 10px 10px;
+            border: 1px solid grey;
+        }
+    </style>
 </head>
 <body>
 
-    <p>${name}</p>
-    <p>${email}</p>
+    <p>${user.firstName} ${user.lastName}</p>
+    <p>${user.email}</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>IP</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach items="${user.data}" var="data">
+                <tr>
+                    <td>${data.date}</td>
+                    <td>${data.time}</td>
+                    <td>${data.ip}</td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+
+    <form name="profileForm" action="profile" method="POST">
+        <input type="submit" value="Log out" name="exit"/>
+    </form>
 
 </body>
 </html>

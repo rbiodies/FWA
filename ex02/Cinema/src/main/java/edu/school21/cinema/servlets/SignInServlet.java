@@ -1,5 +1,6 @@
 package edu.school21.cinema.servlets;
 
+import edu.school21.cinema.models.Data;
 import edu.school21.cinema.models.User;
 import edu.school21.cinema.services.UsersService;
 import org.springframework.context.ApplicationContext;
@@ -42,6 +43,8 @@ public class SignInServlet extends HttpServlet {
         Optional<User> user = usersService.signIn(email, password);
 
         if (user.isPresent()) {
+            //TODO: Change this parameters
+            user.get().getData().add(new Data("Dec 10", "05:00", "127.0.0.1"));
             HttpSession session = request.getSession();
             session.setAttribute("user", user.get());
         }

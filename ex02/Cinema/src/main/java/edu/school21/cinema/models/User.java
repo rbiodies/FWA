@@ -1,5 +1,8 @@
 package edu.school21.cinema.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
     private Long id;
     private String firstName;
@@ -7,6 +10,7 @@ public class User {
     private String phoneNumber;
     private String email;
     private String password;
+    private List<Data> data = new ArrayList<>();
 
     public User(Long id, String firstName, String lastName, String phoneNumber, String email, String password) {
         this.id = id;
@@ -66,6 +70,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Data> getData() {
+        return data;
+    }
+
+    public void setData(List<Data> data) {
+        this.data = data;
     }
 
     @Override
