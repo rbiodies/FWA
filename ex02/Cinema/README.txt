@@ -1,6 +1,8 @@
 # Instructions on how to deploy and use your application.
 
-# You need to create a database. I used SQLite. Specify db.url=/your_path/FWA/test.db in the src/main/webapp/WEB-INF/application.properties file. Run schema.sql and data.sql.
+# You need to create a database. I used SQLite. MAKE SURE THE PATH TO THE DATABASE db.url=/Users/${USER}/your_path/FWA/test.db IN THE src/main/webapp/WEB-INF/application.properties FILE IS CORRECT! Run schema.sql and data.sql.
+
+# You need to run ./README.txt from the Cinema folder.
 
 # Apache Tomcat is one of the most popular web servers in the Java community. It ships as a servlet container capable of serving Web Archives with the WAR extension.
 

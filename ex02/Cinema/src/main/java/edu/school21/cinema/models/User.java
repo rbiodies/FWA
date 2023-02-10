@@ -11,6 +11,8 @@ public class User {
     private String email;
     private String password;
     private List<Data> data = new ArrayList<>();
+    private List<Images> images = new ArrayList<>();
+    private String filePath;
 
     public User(Long id, String firstName, String lastName, String phoneNumber, String email, String password) {
         this.id = id;
@@ -22,6 +24,7 @@ public class User {
     }
 
     public User() {
+
     }
 
     public Long getId() {
@@ -78,6 +81,22 @@ public class User {
 
     public void setData(List<Data> data) {
         this.data = data;
+    }
+
+    public List<Images> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Images> images) {
+        this.images = images;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
     @Override

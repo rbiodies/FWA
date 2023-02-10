@@ -59,9 +59,33 @@
         </tbody>
     </table>
 
+    <img src="<c:url value="${user.filePath}"/>" alt="Not Found"/>
+    <form method="post" action="images" enctype="multipart/form-data">
+        Choose a file: <input type="file" name="multiPartServlet" />
+        <input type="submit" value="Upload" />
+    </form>
     <form name="profileForm" action="profile" method="POST">
         <input type="submit" value="Log out" name="exit"/>
     </form>
+
+    <table>
+        <thead>
+        <tr>
+            <th>File name</th>
+            <th>Size</th>
+            <th>MIME</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${user.images}" var="images">
+            <tr>
+                <td><a href="/Cinema-1.0-SNAPSHOT/images/${images.uniqueName}">${images.fileName}</a></td>
+                <td>${images.size}</td>
+                <td>${images.mime}</td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
 
 </body>
 </html>
