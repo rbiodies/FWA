@@ -41,4 +41,9 @@ public class UsersServiceImpl implements UsersService {
         }
         return Optional.empty();
     }
+
+    @Override
+    public void saveAvatar(Long id, String pathToAvatar) {
+        usersRepository.saveAvatar(id, pathToAvatar);
+    }
 }

@@ -1,4 +1,4 @@
-<jsp:useBean id="user" scope="request" type="edu.school21.cinema.models.User"/>
+<jsp:useBean id="user" scope="session" type="edu.school21.cinema.models.User"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%--
   Created by IntelliJ IDEA.
@@ -59,7 +59,7 @@
         </tbody>
     </table>
 
-    <img src="<c:url value="${user.filePath}"/>" alt="Not Found"/>
+    <img src="images" alt="Not Found"/>
     <form method="post" action="images" enctype="multipart/form-data">
         Choose a file: <input type="file" name="multiPartServlet" />
         <input type="submit" value="Upload" />

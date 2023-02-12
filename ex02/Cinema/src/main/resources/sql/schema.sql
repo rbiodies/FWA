@@ -12,7 +12,8 @@ CREATE TABLE IF NOT EXISTS users (
     lastName    TEXT NOT NULL,
     phoneNumber TEXT NOT NULL,
     email       TEXT NOT NULL,
-    password    TEXT
+    password    TEXT,
+    avatar      TEXT
 );
 
 CREATE TABLE IF NOT EXISTS data (

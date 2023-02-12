@@ -13,6 +13,7 @@ public class User {
     private List<Data> data = new ArrayList<>();
     private List<Images> images = new ArrayList<>();
     private String filePath;
+    private String pathToAvatar;
 
     public User(Long id, String firstName, String lastName, String phoneNumber, String email, String password) {
         this.id = id;
@@ -97,6 +98,14 @@ public class User {
 
     public void setFilePath(String filePath) {
         this.filePath = filePath;
+    }
+
+    public String getPathToAvatar() {
+        return pathToAvatar;
+    }
+
+    public void setPathToAvatar(String pathToAvatar) {
+        this.pathToAvatar = pathToAvatar;
     }
 
     @Override

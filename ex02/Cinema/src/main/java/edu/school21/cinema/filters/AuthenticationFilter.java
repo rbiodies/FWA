@@ -21,9 +21,13 @@ public class AuthenticationFilter implements Filter {
         User user = (User) session.getAttribute("user");
 
         if (user != null && (uri.endsWith("/signIn") || uri.endsWith("/signUp"))) {
-            res.sendRedirect("/Cinema-1.0-SNAPSHOT/profile");
+            //changed it so it kinda works from IDE
+            res.sendRedirect("/profile");
         } else if (user == null && uri.endsWith("/profile")) {
             res.setStatus(HttpServletResponse.SC_FORBIDDEN);
+        } else if (user != null && uri.contains("Cinema-1.0-SNAPSHOT/images/")) {
+            //work in progress
+            request.getRequestDispatcher("/show").forward(request, response);
         } else {
             chain.doFilter(request, response);
         }

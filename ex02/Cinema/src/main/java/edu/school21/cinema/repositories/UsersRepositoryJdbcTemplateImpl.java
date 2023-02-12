@@ -48,6 +48,10 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
                 new Object[]{email}, new UserMapper()).stream().findAny();
     }
 
+    public void saveAvatar(Long id, String pathToAvatar) {
+        jdbcTemplate.update("UPDATE users SET avatar = ? WHERE id = ?", new Object[]{pathToAvatar, id});
+    }
+
     public static class UserMapper implements RowMapper<User> {
 
         @Override
@@ -60,6 +64,7 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
             user.setPhoneNumber(rs.getString("phoneNumber"));
             user.setEmail(rs.getString("email"));
             user.setPassword(rs.getString("password"));
+            user.setPathToAvatar(rs.getString("avatar"));
 
             return user;
         }
