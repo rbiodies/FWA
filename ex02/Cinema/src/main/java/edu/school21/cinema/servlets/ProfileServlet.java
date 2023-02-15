@@ -14,15 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 
 @WebServlet("/profile")
 public class ProfileServlet extends HttpServlet {
-    private static final String LOCALHOST_v6 = "0:0:0:0:0:0:0:1";
-    private static final String LOCALHOST_v4 = "127.0.0.1";
     private DataService dataService;
     private ImagesService imagesService;
 
@@ -39,38 +33,12 @@ public class ProfileServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
-        dataService.save(user, getClientDate(), getClientTime(), getClientIP(request));
-
         user.setData(dataService.findByUser(user));
         user.setImages(imagesService.findByUser(user));
 
         request.setAttribute("user", user);
 
         request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp").forward(request, response);
-    }
-
-    private String getClientDate() {
-        LocalDate now = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM dd, yyyy").withLocale(Locale.ENGLISH);
-        return now.format(formatter);
-    }
-
-    private String getClientTime() {
-        LocalTime now = LocalTime.now();
-        return now.format(DateTimeFormatter.ofPattern("HH:mm"));
-    }
-
-    private String getClientIP(HttpServletRequest request) {
-        String ip = request.getHeader("X-FORWARDED-FOR");
-
-        if (ip == null || ip.isEmpty()) {
-            ip = request.getRemoteAddr();
-        }
-        if (ip.equals(LOCALHOST_v6)) {
-            ip = LOCALHOST_v4;
-        }
-
-        return ip;
     }
 
     @Override

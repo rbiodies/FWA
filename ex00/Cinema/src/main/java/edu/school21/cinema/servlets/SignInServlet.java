@@ -44,9 +44,9 @@ public class SignInServlet extends HttpServlet {
         if (user.isPresent()) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            response.sendRedirect("/profile");
+            response.sendRedirect("/Cinema-1.0-SNAPSHOT/profile");
         } else {
-            response.sendRedirect("/signIn");
+            response.sendRedirect("/Cinema-1.0-SNAPSHOT/signIn");
         }
     }
 }

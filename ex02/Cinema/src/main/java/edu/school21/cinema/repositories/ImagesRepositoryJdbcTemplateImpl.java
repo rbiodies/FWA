@@ -1,6 +1,6 @@
 package edu.school21.cinema.repositories;
 
-import edu.school21.cinema.models.Images;
+import edu.school21.cinema.models.Image;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -22,35 +22,35 @@ public class ImagesRepositoryJdbcTemplateImpl implements ImagesRepository {
     }
 
     @Override
-    public List<Images> findById(Long id) {
+    public List<Image> findById(Long id) {
         return jdbcTemplate.query("SELECT * FROM images WHERE user_id = ?",
                 new Object[]{id}, new ImagesRepositoryJdbcTemplateImpl.UserMapper());
     }
 
     @Override
-    public List<Images> findAll() {
+    public List<Image> findAll() {
         return jdbcTemplate.query("SELECT * FROM images", new UserMapper());
     }
 
     @Override
-    public void save(Images entity) {
+    public void save(Image entity) {
         jdbcTemplate.update("INSERT INTO images (user_id, fileName, size, mime, uniqueName) VALUES (?, ?, ?, ?, ?)",
                 entity.getUser().getId(), entity.getFileName(), entity.getSize(), entity.getMime(), entity.getUniqueName());
     }
 
-    public static class UserMapper implements RowMapper<Images> {
+    public static class UserMapper implements RowMapper<Image> {
 
         @Override
-        public Images mapRow(ResultSet rs, int rowNum) throws SQLException {
-            Images images = new Images();
+        public Image mapRow(ResultSet rs, int rowNum) throws SQLException {
+            Image image = new Image();
 
-            images.setId(rs.getLong("id"));
-            images.setFileName(rs.getString("fileName"));
-            images.setSize(rs.getString("size"));
-            images.setMime(rs.getString("mime"));
-            images.setUniqueName(rs.getString("uniqueName"));
+            image.setId(rs.getLong("id"));
+            image.setFileName(rs.getString("fileName"));
+            image.setSize(rs.getString("size"));
+            image.setMime(rs.getString("mime"));
+            image.setUniqueName(rs.getString("uniqueName"));
 
-            return images;
+            return image;
         }
     }
 }

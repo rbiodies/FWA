@@ -11,8 +11,7 @@ public class User {
     private String email;
     private String password;
     private List<Data> data = new ArrayList<>();
-    private List<Images> images = new ArrayList<>();
-    private String filePath;
+    private List<Image> images = new ArrayList<>();
 
     public User(Long id, String firstName, String lastName, String phoneNumber, String email, String password) {
         this.id = id;
@@ -83,20 +82,12 @@ public class User {
         this.data = data;
     }
 
-    public List<Images> getImages() {
+    public List<Image> getImages() {
         return images;
     }
 
-    public void setImages(List<Images> images) {
+    public void setImages(List<Image> images) {
         this.images = images;
-    }
-
-    public String getFilePath() {
-        return filePath;
-    }
-
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
     }
 
     @Override

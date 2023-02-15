@@ -16,18 +16,15 @@
             margin: 0;
             background: #F4F1F8;
         }
-        /* внешние границы таблицы серого цвета толщиной 1px */
         table {
             width: 600px;
             border: 1px solid grey;
         }
-        /* границы ячеек первого ряда таблицы */
         th {
             background-color: lightgray;
             padding: 10px;
             border: 1px solid grey;
         }
-        /* границы ячеек тела таблицы */
         td {
             text-align: center;
             padding: 10px 10px 10px 10px;
@@ -59,7 +56,7 @@
         </tbody>
     </table>
 
-    <img src="<c:url value="${user.filePath}"/>" alt="Not Found"/>
+    <img src="images" alt=""/>
     <form method="post" action="images" enctype="multipart/form-data">
         Choose a file: <input type="file" name="multiPartServlet" />
         <input type="submit" value="Upload" />
@@ -77,11 +74,11 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${user.images}" var="images">
+        <c:forEach items="${user.images}" var="image">
             <tr>
-                <td><a href="/Cinema-1.0-SNAPSHOT/images/${images.uniqueName}">${images.fileName}</a></td>
-                <td>${images.size}</td>
-                <td>${images.mime}</td>
+                <td><a href="${pageContext.request.contextPath}/images/${image.uniqueName}">${image.fileName}</a></td>
+                <td>${image.size}</td>
+                <td>${image.mime}</td>
             </tr>
         </c:forEach>
         </tbody>

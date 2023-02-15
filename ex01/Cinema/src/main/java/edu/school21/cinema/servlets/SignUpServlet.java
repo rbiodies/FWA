@@ -19,7 +19,7 @@ public class SignUpServlet extends HttpServlet {
     private UsersService usersService;
 
     @Override
-    public void init(ServletConfig config) throws ServletException {
+    public void init(ServletConfig config) {
         ServletContext context = config.getServletContext();
         ApplicationContext springContext = (ApplicationContext) context.getAttribute("springContext");
         this.usersService = springContext.getBean(UsersService.class);
@@ -41,6 +41,6 @@ public class SignUpServlet extends HttpServlet {
 
         usersService.signUp(firstName, secondName, phoneNumber, email, password);
 
-        response.sendRedirect("/signIn");
+        response.sendRedirect("/Cinema-1.0-SNAPSHOT/signIn");
     }
 }

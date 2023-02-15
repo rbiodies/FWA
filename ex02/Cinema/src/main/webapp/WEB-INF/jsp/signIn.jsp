@@ -9,6 +9,14 @@
 <html>
 <head>
     <title>Log in</title>
+    <style>
+        table {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%)
+        }
+    </style>
 </head>
 <body>
 

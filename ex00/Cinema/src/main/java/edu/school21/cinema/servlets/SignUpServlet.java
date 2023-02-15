@@ -41,6 +41,6 @@ public class SignUpServlet extends HttpServlet {
 
         usersService.signUp(firstName, secondName, phoneNumber, email, password);
 
-        response.sendRedirect("/signIn");
+        response.sendRedirect("/Cinema-1.0-SNAPSHOT/signIn");
     }
 }

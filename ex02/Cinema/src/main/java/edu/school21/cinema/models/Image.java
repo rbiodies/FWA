@@ -1,6 +1,6 @@
 package edu.school21.cinema.models;
 
-public class Images {
+public class Image {
     private Long id;
     private User user;
     private String fileName;
@@ -8,7 +8,7 @@ public class Images {
     private String mime;
     private String uniqueName;
 
-    public Images(Long id, User user, String fileName, String size, String mime, String uniqueName) {
+    public Image(Long id, User user, String fileName, String size, String mime, String uniqueName) {
         this.id = id;
         this.user = user;
         this.fileName = fileName;
@@ -17,7 +17,7 @@ public class Images {
         this.uniqueName = uniqueName;
     }
 
-    public Images() {
+    public Image() {
     }
 
     public Long getId() {

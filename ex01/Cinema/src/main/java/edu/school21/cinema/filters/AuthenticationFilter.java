@@ -20,7 +20,7 @@ public class AuthenticationFilter implements Filter {
         String user = (String) session.getAttribute("user");
 
         if (Objects.equals(user, "authenticated") && (uri.endsWith("/signIn") || uri.endsWith("/signUp"))) {
-            res.sendRedirect("/profile");
+            res.sendRedirect("/Cinema-1.0-SNAPSHOT/profile");
         } else if (!Objects.equals(user, "authenticated") && uri.endsWith("/profile")) {
             res.setStatus(HttpServletResponse.SC_FORBIDDEN);
         } else {

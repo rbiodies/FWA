@@ -4,6 +4,12 @@
 
 # You need to run ./README.txt from the Cinema folder.
 
+# ./README.txt
+
+# If you get the error zsh: permission denied: ./README.txt
+
+# chmod 755 README.txt
+
 # Apache Tomcat is one of the most popular web servers in the Java community. It ships as a servlet container capable of serving Web Archives with the WAR extension.
 
 curl https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.71/bin/apache-tomcat-9.0.71.tar.gz | tar -xz
@@ -36,14 +42,6 @@ open http://localhost:8080/Cinema-1.0-SNAPSHOT
 
 # curl https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.71/bin/apache-tomcat-9.0.71.tar.gz | tar -xz && mvn clean package && cp target/Cinema-1.0-SNAPSHOT.war apache-tomcat-9.0.71/webapps/ && apache-tomcat-9.0.71/bin/startup.sh && sleep 0.5 && open http://localhost:8080/Cinema-1.0-SNAPSHOT
 
-# Also you can run all commands at once
-
-# ./README.txt
-
-# If you get the error zsh: permission denied: ./README.txt
-
-# chmod 755 README.txt
-
 # We can shut down the Tomcat server by simply running the shutdown script
 
 # apache-tomcat-9.0.71/bin/shutdown.sh
@@ -52,10 +50,14 @@ open http://localhost:8080/Cinema-1.0-SNAPSHOT
 
 # mvn clean
 
+# Remove an image folder.
+
+# rm -rf src/main/webapp/images
+
 # Remove an Apache Tomcat.
 
 # rm -rf apache-tomcat-9.0.71
 
 # Run all commands at once
 
-# apache-tomcat-9.0.71/bin/shutdown.sh && mvn clean && rm -rf apache-tomcat-9.0.71
+# apache-tomcat-9.0.71/bin/shutdown.sh && mvn clean && rm -rf src/main/webapp/images && rm -rf apache-tomcat-9.0.71

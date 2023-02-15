@@ -1,6 +1,6 @@
 package edu.school21.cinema.services;
 
-import edu.school21.cinema.models.Images;
+import edu.school21.cinema.models.Image;
 import edu.school21.cinema.models.User;
 import edu.school21.cinema.repositories.ImagesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,18 +20,22 @@ public class ImagesServiceImpl implements ImagesService {
 
     @Override
     public void save(User user, String fileName, String size, String mime, String uniqueName) {
-        Images images = new Images(1L, user, fileName, size, mime, uniqueName);
+        Image image = new Image(1L, user, fileName, size, mime, uniqueName);
 
-        imagesRepository.save(images);
+        imagesRepository.save(image);
     }
 
     @Override
-    public List<Images> findByUser(User user) {
+    public List<Image> findByUser(User user) {
         return imagesRepository.findById(user.getId());
     }
 
     @Override
-    public int getLastId() {
-        return imagesRepository.findAll().size();
+    public Image getLastImageByUser(User user) {
+        List<Image> images = imagesRepository.findById(user.getId());
+        if (images.size() > 0) {
+            return images.get(images.size() - 1);
+        }
+        return null;
     }
 }
