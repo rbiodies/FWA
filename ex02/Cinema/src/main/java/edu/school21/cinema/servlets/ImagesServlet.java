@@ -34,7 +34,7 @@ public class ImagesServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("image/jpeg");
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
@@ -46,18 +46,14 @@ public class ImagesServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
-
         User user = (User) session.getAttribute("user");
-
         String fileName = null;
-
         String uniqueName = null;
-
         String filePath = null;
 
         for (Part part : request.getParts()) {
             fileName = part.getSubmittedFileName();
-            uniqueName = imagesService.getLastImageByUser(user).getId() + 1 + "." + FilenameUtils.getExtension(fileName);
+            uniqueName = imagesService.getCountImages() + 1 + "." + FilenameUtils.getExtension(fileName);
             filePath = System.getProperty("user.dir") + File.separator + storagePath + File.separator + uniqueName;
             part.write(filePath);
         }
@@ -66,6 +62,7 @@ public class ImagesServlet extends HttpServlet {
             File file = new File(filePath);
             imagesService.save(user, fileName, getSize(file), getMime(file), uniqueName);
         }
+
         response.sendRedirect("/Cinema-1.0-SNAPSHOT/profile");
     }
 

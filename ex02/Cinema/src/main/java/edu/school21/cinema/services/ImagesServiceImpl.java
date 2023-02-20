@@ -38,4 +38,10 @@ public class ImagesServiceImpl implements ImagesService {
         }
         return null;
     }
+
+    @Override
+    public int getCountImages() {
+        List<Image> images = imagesRepository.findAll();
+        return images.size();
+    }
 }

@@ -12,4 +12,6 @@ public interface ImagesService {
     List<Image> findByUser(User user);
 
     Image getLastImageByUser(User user);
+
+    int getCountImages();
 }
